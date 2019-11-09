@@ -1,0 +1,32 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Detail";
+}
+
+    <div class="container-fluid" style="margin-top:90px;">
+        <div class="row">
+            <div class="col-12">
+                <h5>Name</h5>
+                <p>@Model.Name</p>
+                <h5>Description</h5>
+                <p>@Model.Description</p>
+                <h5>Text</h5>
+                <p>@Model.Text</p>
+                <h5>Count</h5>
+                <p>@Model.Count</p>
+                <h5>Price</h5>
+                <p>@Model.Price</p>
+                <h5>Category</h5>
+                <p>@Model.Category.CategoryName</p>
+                <h5>Image</h5>
+                <img src="~/img/category/@Model.ProductImages.FirstOrDefault()?.Image" width="300px" />
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-12">
+                <a asp-action="Index">Go Back</a>
+            </div>
+        </div>
+    </div>
+

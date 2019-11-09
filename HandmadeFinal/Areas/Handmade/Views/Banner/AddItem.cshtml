@@ -1,0 +1,50 @@
+﻿@model HomeBanner
+@{
+    ViewData["Title"] = "AddItem";
+
+}
+
+<div class="container-fluid" style="margin-top:90px;">
+    <div class="row">
+        <div class="col-12">
+            <form method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Title:</label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Subtitle:</label>
+                    <textarea asp-for="Subtitle" class="form-control"></textarea>
+                    <span asp-validation-for="Subtitle" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Photo:</label>
+                    <input asp-for="Photo" class="form-control" accept="image/*" />
+                    <span asp-validation-for="Photo" class="text-danger"></span>
+                </div>
+                <button type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                    <i class="zmdi zmdi-plus"></i>Create
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#Subtitle'))
+            .catch(error => {
+                console.error(error);
+            });
+
+          ClassicEditor
+            .create(document.querySelector('#Title'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>B
+
+}
+

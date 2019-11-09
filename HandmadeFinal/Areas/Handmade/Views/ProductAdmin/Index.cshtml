@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "Index";
+    
+}
+
+<div class="row " style="margin-top:90px;overflow-x:scroll;overflow-y:scroll;">
+    <div class="col-md-12 ">
+        <div class="table-data__tool">
+
+            <div class="table-data__tool-left">
+                <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                    <i class="zmdi zmdi-plus"></i>  <a style="color:white;" href="ProductAdmin/AddItem">add item</a>
+                </button>
+
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive table-responsive-data2">
+            <table class="table table-data2">
+                <thead>
+                    <tr>
+                        <th scope="col"># </th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Text</th>
+                        <th scope="col">Count</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Images</th>
+
+
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @{int count = 1; }
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+
+                        <td> @count</td>
+                        <td>@item.Name</td>
+                        
+                         <td>@item.Text</td>
+
+                        <td>@item.Count</td>
+
+                        <td>@item.Price</td>
+                        <td><img src="~/img/@item.ProductImages.FirstOrDefault()?.Image" alt="Alternate Text" style="width:150px;margin-top:20px;" /></td>
+                        <td>@item.Category.CategoryName</td>
+                        <td>
+                            <div class="table-data-feature">
+                                <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
+                                    <i class="zmdi zmdi-mail-send"></i>
+                                </button>
+                                <a asp-controller="ProductAdmin" asp-action="Update" asp-route-id="@item.Id" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                    <i class="zmdi zmdi-edit"></i>
+                                </a>
+                                <a asp-controller="ProductAdmin" asp-action="Delete" asp-route-id="@item.Id" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                    <i class="zmdi zmdi-delete"></i>
+                                </a>
+                                <a asp-controller="ProductAdmin" asp-action="Detail" asp-route-id="@item.Id" class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                    <i class="zmdi zmdi-more"></i>
+                                </a>
+                            
+                            </div>
+                        </td>
+                    </tr>
+                        count++;
+                        <tr class="spacer"></tr>
+                    }
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

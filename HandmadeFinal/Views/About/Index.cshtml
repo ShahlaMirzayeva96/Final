@@ -1,0 +1,77 @@
+﻿@model IEnumerable<About>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<section class="breadcrumb breadcrumb_bg">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="breadcrumb_iner">
+                    <div class="breadcrumb_iner_item">
+                        <p>Ana Səhifə/Haqqımızda</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="about_part section_padding">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="single_about_part">
+                    <img src="~/img/@Model.FirstOrDefault()?.Image" alt="#">
+                    <h4>Sayt haqqında</h4>
+                    <p>@Model.FirstOrDefault()?.AboutCompany</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="single_about_part">
+                    <img src="~/img/@Model.FirstOrDefault()?.JobImage" alt="#">
+                    <h4>Əl Sənəti</h4>
+                    <p>@Model.FirstOrDefault()?.AboutJob</p>  
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- about part end -->
+<!-- free shipping here -->
+<section class="shipping_details section_padding border_top">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-sm-6">
+                <div class="single_shopping_details">
+                    <img src="~/img/icon/icon_1.png" alt="">
+                    <h4>Free shipping</h4>
+                    <p>Divided face for bearing the divide unto seed winged divided light Forth.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="single_shopping_details">
+                    <img src="~/img/icon/icon_2.png" alt="">
+                    <h4>Free shipping</h4>
+                    <p>Divided face for bearing the divide unto seed winged divided light Forth.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="single_shopping_details">
+                    <img src="~/img/icon/icon_3.png" alt="">
+                    <h4>Free shipping</h4>
+                    <p>Divided face for bearing the divide unto seed winged divided light Forth.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="single_shopping_details">
+                    <img src="~/img/icon/icon_4.png" alt="">
+                    <h4>Free shipping</h4>
+                    <p>Divided face for bearing the divide unto seed winged divided light Forth.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

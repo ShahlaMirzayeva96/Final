@@ -1,0 +1,31 @@
+﻿@model BrandIcon
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+<div class="container-fluid" style="margin-top:90px;">
+    <div class="row">
+        <div class="col-12">
+          
+
+            <img src="~/img/@Model.Icon" width="200px" />
+
+            <p class="text-danger">Are you sure delete this data?</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <form method="post">
+                <input type="submit" class="btn btn-danger" value="Delete" />
+            </form>
+
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-12 mt-3">
+            <a asp-action="Index">Go Back</a>
+        </div>
+    </div>
+</div>

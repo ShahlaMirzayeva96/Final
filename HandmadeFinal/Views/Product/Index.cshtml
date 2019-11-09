@@ -1,0 +1,122 @@
+﻿@model ProductsView
+@{
+    ViewData["Title"] = "Məhsullar";
+}
+
+<section class="breadcrumb breadcrumb_bg">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="breadcrumb_iner">
+                    <div class="breadcrumb_iner_item">
+                        <p>Ana Səhifə/Məhsullar</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cat_product_area section_padding border_top">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="left_sidebar_area">
+                    <aside class="left_widgets p_filter_widgets sidebar_box_shadow">
+                        <div class="l_w_title">
+                            <h3>Kateqoriyalar</h3>
+                        </div>
+                        <div class="widgets_inner" id="categories">
+
+
+                            <ul class="list">
+                                @foreach (var item in Model.Categories)
+                                {
+
+                                    <li id="category">
+                                        <a href="/Product/Index?categoryid=@item.Id" >@item.CategoryName</a>
+                                    </li>
+
+                                }
+
+                            </ul>
+                        </div>
+                    </aside>
+
+
+
+                   
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="row " id="load-product">
+                    <div class="col-lg-12">
+                        <div class="product_top_bar d-flex justify-content-between align-items-center">
+                            <div class="single_product_menu product_bar_item">
+                                <h2>@Model.Products.FirstOrDefault()?.Category.CategoryName</h2>
+                            </div>
+                            <div class="product_top_bar_iner product_bar_item d-flex">
+                                <div class="product_bar_single">
+                                
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <partial name="_LoadProductPartialView" />
+
+
+                </div>
+            </div>
+
+            @*<div class="col-lg-9 text-center">
+                <input type="hidden" id="pro-count" value="@ViewBag.ProductCount" />
+                <button  id="More" class="btn_2">Daha çox</button>
+            </div>*@
+
+        </div>
+    </div>
+</section>
+
+}
+
+<!--================End Category Product Area =================-->
+<!-- free shipping here -->
+<section class="shipping_details section_padding border_top">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-sm-6">
+                <div class="single_shopping_details">
+                    <img src="img/icon/icon_1.png" alt="">
+                    <h4>Free shipping</h4>
+                    <p>Divided face for bearing the divide unto seed winged divided light Forth.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="single_shopping_details">
+                    <img src="img/icon/icon_2.png" alt="">
+                    <h4>Free shipping</h4>
+                    <p>Divided face for bearing the divide unto seed winged divided light Forth.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="single_shopping_details">
+                    <img src="img/icon/icon_3.png" alt="">
+                    <h4>Free shipping</h4>
+                    <p>Divided face for bearing the divide unto seed winged divided light Forth.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="single_shopping_details">
+                    <img src="img/icon/icon_4.png" alt="">
+                    <h4>Free shipping</h4>
+                    <p>Divided face for bearing the divide unto seed winged divided light Forth.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+

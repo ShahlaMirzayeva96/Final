@@ -1,0 +1,10 @@
+﻿@model HeaderViewModel
+@foreach (var item in Model.Products)
+{
+
+    <li>
+        <a style="color:white;" asp-controller="Product"asp-action="SingleProduct"asp-route-id="@item.Id"> @item.Name</a>
+
+    </li>
+
+}

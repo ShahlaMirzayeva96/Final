@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Category>
+@{
+    ViewData["Title"] = "Index";
+
+}
+
+<div class="row " style="margin-top:90px;">
+    <div class="col-md-12 ">
+        <div class="table-data__tool">
+
+            <div class="table-data__tool-left">
+                <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                    <i class="zmdi zmdi-plus"></i>  <a style="color:white;" href="CategoryAdmin/AddItem">add item</a>
+                </button>
+                <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
+                    <select class="js-select2" name="type">
+                        <option selected="selected">Export</option>
+                        <option value="">Option 1</option>
+                        <option value="">Option 2</option>
+                    </select>
+                    <div class="dropDownSelect2"></div>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive table-responsive-data2">
+            <table class="table table-data2">
+                <thead>
+                    <tr>
+                        <th scope="col"># </th>
+                        <th scope="col">Name</th>
+                       
+                        <th scope="col">Image</th>
+                        <th scope="col"></th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                   @{ 
+                       int count = 1; }
+                  @foreach (var item in Model)
+                  {
+                        <tr>
+
+                            <td> @count</td>
+
+                            <td>@item.CategoryName</td>
+
+                            
+                            <td><img src="~/img/@item.CategoryImage" alt="Alternate Text" style="width:150px;margin-top:20px;" /></td>
+                            <td>
+                                <div class="table-data-feature">
+                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
+                                        <i class="zmdi zmdi-mail-send"></i>
+                                    </button>
+                                    <a asp-controller="CategoryAdmin" asp-action="Update" asp-route-id="@item.Id" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                        <i class="zmdi zmdi-edit"></i>
+                                    </a>
+                                    <a asp-controller="CategoryAdmin" asp-action="Delete" asp-route-id="@item.Id" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                        <i class="zmdi zmdi-delete"></i>
+                                    </a>
+                                    <a asp-controller="CategoryAdmin" asp-action="Detail" asp-route-id="@item.Id" class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                        <i class="zmdi zmdi-more"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                      count++;
+                        <tr class="spacer"></tr>
+                  }
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                       

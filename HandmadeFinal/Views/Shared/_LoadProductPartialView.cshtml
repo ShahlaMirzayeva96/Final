@@ -1,0 +1,26 @@
+﻿@model ProductsView
+
+@foreach (var product in Model.Products)
+{
+    <div class="col-lg-4 col-sm-6">
+        <div class="single_category_product">
+            <div class="single_category_img">
+                <input type="hidden" id="cate-id" value="@product.Category.Id" />
+                <img src="~/img/@product.ProductImages.FirstOrDefault()?.Image" alt="">
+                <div class="category_social_icon">
+                    <ul>
+                        <li><a><i class="@product.IconLike"></i></a></li>
+                        <li><a class="add-basket" data-id="@product.Id" @*href="/Product/addbasket/@product.Id"*@><i class="ti-bag"></i></a></li>
+                    </ul>
+                </div>
+                <div class="category_product_text">
+                    <a asp-controller="Product" asp-action="SingleProduct" asp-route-id="@product.Id"><h5>@product.Name</h5></a>
+                    <p>@product.Price AZN</p>
+                </div>
+            </div>
+        </div>
+   
+    </div>
+
+}
+

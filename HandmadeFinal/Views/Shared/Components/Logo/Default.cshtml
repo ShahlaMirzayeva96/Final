@@ -1,0 +1,109 @@
+﻿@using HandmadeFinal.ViewModels
+@model HeaderViewModel
+<header class="main_menu home_menu">
+    <div class="container-fluid">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-lg-11">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="navbar-brand" asp-controller="Home" asp-action="Index"> <img src="~/img/@Model.Logos.FirstOrDefault()?.LogoImage" alt="logo"> </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="menu_icon"><i class="fas fa-bars"></i></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse main-menu-item" id="navbarSupportedContent">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Home" asp-action="Index">Ana Səhifə</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown_1"
+                                   role="button" data-toggle="dropdown">
+                                    Məhsullar
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
+                                    @foreach (var item in Model.Categories)
+                                    {
+
+                                        <a class="dropdown-item" href="/Product/Index?categoryid=@item.Id">@item.CategoryName</a>
+                                    }
+                                    <a class="dropdown-item" href="/Product/Index">Bütün Məhsullar</a>
+
+
+
+                                </div>
+                            </li>
+
+                        
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="About"asp-action="Index">Haqqımızda</a>
+                            </li>
+                          
+                          
+                        </ul>
+                    </div>
+                    <ul>
+                        <li class="nav-item dropdown">
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <a style="font-weight:700">
+
+                                    @User.Identity.Name
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown_2"
+                                   role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-weight:700">
+
+                                    Hesabım
+                                </a>
+                            }
+
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
+
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <a asp-controller="Account" asp-action="Logout" class="dropdown-item">Çıxış</a>
+                                }
+                                else
+                                {
+                                    <a asp-controller="Account" asp-action="Login" class="dropdown-item">Daxil ol </a>
+                                    <a asp-controller="Account" asp-action="Register" class="dropdown-item">Qeydiyyat</a>
+                                }
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="hearer_icon d-flex">
+                        <div class="dropdown cart">
+                            <a asp-controller="Product" asp-action="Basket">
+                                 <i class="fas fa-shopping-bag"></i>
+                           
+                              
+                            </a>
+
+
+                        </div>
+                    </div>
+                    <form asp-controller="Home" asp-action="Search" method="get">
+                        <div class="dropdown" id="search">
+                            <input type="text" style="margin-left:20px;width:60%;" id="customerNameSearchTextbox" class="form-control" placeholder="Axtar" aria-describedby="basic-addon1" data-toggle="dropdown" onkeyup="customerNameSearchTextbox_keyup();" autocomplete="off" />
+                            <ul class="dropdown-menu " style="margin-left:20px;" aria-labelledby="dropdownMenu1" id="customerNameUL">
+                                <li>
+                                    <a style="color:white;"> </a>
+
+                                </li>
+                            </ul>
+                        </div>
+
+                    </form>
+
+
+
+                    </nav>
+                </div>
+            </div>
+            </div>
+
+        </header>

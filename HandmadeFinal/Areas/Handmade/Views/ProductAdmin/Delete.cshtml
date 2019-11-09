@@ -1,0 +1,47 @@
+﻿@model ProductsView
+@{
+    ViewData["Title"] = "Delete";
+}
+<div class="container-fluid" style="margin-top:90px;">
+    <div class="row">
+        <div class="col-12">
+            <span class="text-info">Name:</span>
+            <h4>@Model.Product.Name</h4>
+            <span class="text-info">Description:</span>
+            <h4>@Model.Product.Description</h4>
+            <span class="text-info">Text:</span>
+            <h4>@Model.Product.Text</h4>
+            <span class="text-info">Price:</span>
+            <h4>@Model.Product.Price</h4>
+            <span class="text-info">Count:</span>
+            <h4>@Model.Product.Count</h4>
+            <span class="text-info">Category:</span>
+            <h4>@Model.Product.Category.CategoryName</h4>
+
+
+            <span class="text-info">Image:</span>
+            @foreach (var item in Model.ProductImages.Where(p => p.ProductId == p.Product.Id))
+            {
+                <img src="~/img/category/@item.Image" style="width:200px" />
+            }
+
+
+            <p class="text-danger">Are you sure delete this data?</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <form method="post">
+                <input type="submit" class="btn btn-danger" value="Delete" />
+            </form>
+
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-12 mt-3">
+            <a asp-action="Index">Go Back</a>
+        </div>
+    </div>
+</div>
+

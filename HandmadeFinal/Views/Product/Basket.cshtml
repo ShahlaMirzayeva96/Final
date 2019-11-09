@@ -1,0 +1,86 @@
+﻿@model IEnumerable<BasketProduct>
+@{
+    ViewData["Title"] = "Basket";
+}
+
+
+
+<section class="breadcrumb breadcrumb_bg">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="breadcrumb_iner">
+                    <div class="breadcrumb_iner_item">
+                        <p>Ana Səhifə/Səbət</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@if (Model.ToList().Count == 0)
+{
+    <div class="alert alert-warning text-center">
+        Səbət boşdur.
+    </div>
+}
+else      
+{
+    <section class="cart_area section_padding">
+        <div class="container">
+            <div class="cart_inner">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">№</th>
+                                <th scope="col">Product</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td><a href="RemoveBasket/@item.Id" @*class="remove-basket"data-id="@item.Id"*@><i class="fas fa-trash-alt" ></i></a></td>
+                                    <td>
+                                        <div class="media">
+                                            <div class="d-flex">
+                                                <img src="~/img/@item.Image" /> 
+                                            </div>
+                                            <div class="media-body">
+                                                <p>@item.Details</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <h5>@item.Price</h5>
+
+                                    </td>
+                                    <td>
+                                        <div class="product_count">
+                                            <span>@item.Quantity</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <h5>@(item.Price*item.Quantity)</h5>
+                                    </td>
+                                </tr>
+                            }
+                        
+                        </tbody>
+                    </table>
+                    <div class="checkout_btn_inner float-right">
+                        <a class="btn_1" href="#">Continue Shopping</a>
+                        <a class="btn_1 checkout_btn_1" href="#">Proceed to checkout</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+}
+
+
